@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -52,7 +53,7 @@ export default function Home() {
       {/* Header */}
       <header className="relative z-10 border-b border-[#f5e6d3]/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
             <img
               src="https://ugc.same-assets.com/zsDFVP_CtAHtwa6jVppixeyYZteue4cK.png"
               alt="Songbird AI Logo"
@@ -61,7 +62,7 @@ export default function Home() {
             <span className="text-xl font-semibold text-[#f5e6d3] tracking-tight">
               Songbird AI
             </span>
-          </a>
+          </Link>
           <div className="flex items-center gap-3">
             <Button
               variant="ghost"
@@ -386,7 +387,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 border-t border-[#f5e6d3]/10 py-12 px-6 mt-20">
         <div className="max-w-7xl mx-auto text-center">
-          <a href="/" className="inline-flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
+          <Link href="/" className="inline-flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
             <img
               src="https://i.imgur.com/9QX8Z5H.png"
               alt="Songbird AI Logo"
@@ -395,7 +396,7 @@ export default function Home() {
             <span className="text-lg font-semibold text-[#f5e6d3]">
               Songbird AI
             </span>
-          </a>
+          </Link>
           <div className="text-[#f5e6d3]/50 text-sm">
             <p>© 2026 Songbird AI. All rights reserved.</p>
             <p className="mt-2">Create music with the power of AI and your unique style.</p>

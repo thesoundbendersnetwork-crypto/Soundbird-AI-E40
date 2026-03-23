@@ -201,6 +201,27 @@ interface SpeechRecognitionErrorEvent extends Event {
   error: string;
 }
 
+interface ISpeechRecognition {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onstart: () => void;
+  onresult: (event: SpeechRecognitionEvent) => void;
+  onerror: (event: SpeechRecognitionErrorEvent) => void;
+  onend: () => void;
+  start: () => void;
+  stop: () => void;
+}
+
+interface ISpeechRecognitionConstructor {
+  new (): ISpeechRecognition;
+}
+
+interface WindowWithSpeech extends Window {
+  webkitSpeechRecognition?: ISpeechRecognitionConstructor;
+  SpeechRecognition?: ISpeechRecognitionConstructor;
+}
+
 export default function Home() {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [prompt, setPrompt] = useState("");
@@ -300,7 +321,13 @@ export default function Home() {
       return;
     }
 
-    const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+    const SpeechRecognition = (window as unknown as WindowWithSpeech).webkitSpeechRecognition || (window as unknown as WindowWithSpeech).SpeechRecognition;
+    
+    if (!SpeechRecognition) {
+      alert("Voice recognition is not supported in your browser. Please use Chrome or Edge.");
+      return;
+    }
+
     const recognition = new SpeechRecognition();
 
     recognition.continuous = true;
